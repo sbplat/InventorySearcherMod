@@ -48,6 +48,7 @@ public abstract class MixinAbstractContainerScreen extends Screen {
 
     @Inject(at=@At("RETURN"), method="renderSlot(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/world/inventory/Slot;)V")
     private void renderSlot(PoseStack matrices, Slot slot, CallbackInfo ci) {
+        if (searchBarWidget == null) return;
         if (!searchBarWidget.matches(slot.getItem())) {
             RenderSystem.disableDepthTest();
             RenderSystem.colorMask(true, true, true, false);
@@ -64,6 +65,7 @@ public abstract class MixinAbstractContainerScreen extends Screen {
 
     @Inject(at=@At("HEAD"), method="keyPressed(III)Z", cancellable=true)
     private void keyPressed(int keyCode, int scanCode, int modifiers, CallbackInfoReturnable<Boolean> cir) {
+        if (searchBarWidget == null) return;
         if (!searchBarWidget.canConsumeInput()) return;
         if (searchBarWidget.keyPressed(keyCode, scanCode, modifiers)) {
             cir.setReturnValue(true);
