@@ -1,0 +1,32 @@
+{
+	"schemaVersion": 1,
+	"id": "inventorysearcher",
+	"version": "${version}",
+	"name": "InventorySearcher",
+	"description": "",
+	"authors": [
+		"sbplat"
+	],
+	"contact": {
+		"homepage": "https://github.com/sbplat/InventorySearcherMod",
+		"sources": "https://github.com/sbplat/InventorySearcherMod",
+		"issues": "https://github.com/sbplat/InventorySearcherMod/issues"
+	},
+	"license": "Apache License 2.0",
+	"icon": "",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"com.sbplat.inventorysearcher.InventorySearcher"
+		]
+	},
+	"mixins": [
+		"inventorysearcher.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.21",
+		"minecraft": "~1.19.4",
+		"java": ">=17",
+		"fabric-api": "*"
+	}
+}
